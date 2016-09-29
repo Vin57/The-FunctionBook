@@ -14,6 +14,10 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
+------------------------------------------------------------------
+  ------------------------------firstKey-------------------------
+------------------------------------------------------------------
+
 # If you want to return the key on an associative array to get the first occurence 
 # of this array for exemple and if you don't know the key of the element that you search,
 # it's impossible to find it without create you're own fonction, you can use for example : 
