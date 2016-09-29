@@ -6,6 +6,9 @@
 /****************************DATE FUNCTION*************************/
 *********************************************************************
 
+# When you just want to operate to date and it's not work, you just become crazy,
+# This function may be the solution to all your problem with date operation
+    
 /**
      * operationDate : retourne en nombre de jour le résultat d'une opération entre deux dates
      * @params : $dateOne une premiére date
