@@ -14,8 +14,8 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
   
-  ------------------------------------------------------------------
-  ------------------------------operationDate-------------------------
+------------------------------------------------------------------
+------------------------------operationDate-------------------------
 ------------------------------------------------------------------
   
 # When you just want to operate to date and it's not work, you just become crazy,
@@ -70,5 +70,72 @@
             $result = -1;
         }
         return $result;
+    }
+
+------------------------------------------------------------------
+------------------------------isDate-------------------------
+------------------------------------------------------------------
+# Ther is no any function to check if a date is a french date so...
+# Use this following, it's an easy and elegant function for don't become crazy
+# When you just wan't to check if a date is really a date
+  
+/**
+     * Indique si une valeur est une date au format dd/mm/YYYY
+     * @param $valeur une valeur à tester
+     * @return boolean vrai ou faux
+     */
+    public static function isDate($valeur)
+    {
+        if(substr($valeur,0,1)<3)
+        {
+          if(preg_match("#^[0-2][0-9]{1}/#",substr($valeur,0,3)))
+          {
+              if(substr($valeur,3,1)==0)
+              {
+                  if(preg_match("#[0-9]{1}/#",substr($valeur,4,2)))
+                  {
+                      if(preg_match("#[0-9]{4}$#", substr($valeur,6,4)))
+                      {
+                          return true;
+                      }
+                  }
+              }
+              else{
+                  if(preg_match("#1[0-2]{1}/#",substr($valeur,3,3)))
+                  {
+
+                      if(preg_match("#[0-9]{4}$#", substr($valeur,6,4)))
+                      {
+                          return true;
+                      }
+                  }
+              }
+          }
+        }
+        else{
+          if(preg_match("#^3[0-1]{1}/#",substr($valeur,0,3)))
+          {
+              if(substr($valeur,3,1)==0)
+              {
+                  if(preg_match("#[0-9]{1}/#",substr($valeur,4,2)))
+                  {
+                      if(preg_match("#[0-9]{4}$#", substr($valeur,6,4)))
+                      {
+                          return true;
+                      }
+                  }
+              }
+              else{
+                  if(preg_match("#1[0-2]{1}/#",substr($valeur,3,3)))
+                  {
+                      if(preg_match("#[0-9]{4}$#", substr($valeur,6,4)))
+                      {
+                          return true;
+                      }
+                  }
+              }
+          }
+        }
+        return false;
     }
 ?>
