@@ -75,16 +75,16 @@
 ------------------------------------------------------------------
 ------------------------------isDate-------------------------
 ------------------------------------------------------------------
-# Ther is no any function to check if a date is a french date so...
-# Use this following, it's an easy and elegant function for don't become crazy
-# When you just wan't to check if a date is really a date
+# I know that there is already a function to check a gregorian date in PHP (checkDate)
+# But you need to format the date with explode him into a month, a day, and a year before use it.
+# Use this following fonction, allow you to only enter the date value to the European standard size
   
 /**
-     * Indique si une valeur est une date au format dd/mm/YYYY
-     * @param $valeur une valeur à tester
+     * Indique si une valeur est une date au format dd/mm/YYYY (format standard européen)
+     * @param $date une valeur à tester
      * @return boolean vrai ou faux
      */
-    public static function isDate($valeur)
+    public static function isDate($date)
     {
         if(substr($valeur,0,1)<3)
         {
