@@ -1,10 +1,29 @@
+/*********************************************************************
+/*************************sp_drop_index_if_exists*********************/
+/*********************************************************************/
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!each function have probably an exemple of how to use it!!!!!!!!!!!!!!!!!!!!!
+!!!!!!Check the "name of the procedure" in the
+                "generic procedure" section in 
+                "Watch and Test" file in the
+                "How To Use It" folder!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+------------------------------------------------------------------
+  ------------------------------sp_index_exists-------------------------
+------------------------------------------------------------------
+
+# If you want to manage your index, you may would use the drop index if exists syntaxe...
+# but this syntaxe does not exists in mysql 5.7, so you can use the folowing procedure wich
+# make the same thing :
 DELIMITER $
 
 DROP PROCEDURE IF EXISTS sp_index_exists$
 
 /*
-	******* DESCRIPTION *******
-	* sp_index_exists check if an index exists
+    ******* DESCRIPTION *******
+    * sp_index_exists check if an index exists
     ******* PARAMETRE *******
     * name_index name of the index to search (default searching index in the current selected database)
     * name_table (optional) table where search the index
@@ -65,8 +84,8 @@ END$
 
 
 /*
-	******* DESCRIPTION *******
-	* sp_drop_index supprime un index
+    ******* DESCRIPTION *******
+    * sp_drop_index supprime un index
     ******* PARAMETRE *******
     * name_index name of the index to delete
     * name_table table where search the index
