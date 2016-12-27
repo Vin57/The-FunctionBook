@@ -1,3 +1,3 @@
 # The-FunctionBook
-Function who still not exists in php and... it's really sad, so i created functions wich can be usefull
+Some function/procedure wich could be useful! enjoy it it's free ;D
 Created 29 september 2016
