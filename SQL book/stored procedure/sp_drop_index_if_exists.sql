@@ -16,7 +16,7 @@
 
 # If you want to manage your index, you may would use the drop index if exists syntaxe...
 # but this command does not exists in mysql, so you can use the folowing procedure wich
-# make the same thing by passing specific parameter, see how to usen the file how to use it/Watch and Test>generic procedure>sp_drop_index_if_exists :
+# make the same thing by passing specific parameter, see how in : how to use it/Watch and Test>generic procedure>sp_drop_index_if_exists :
 DELIMITER $
 
 DROP PROCEDURE IF EXISTS sp_index_exists$
