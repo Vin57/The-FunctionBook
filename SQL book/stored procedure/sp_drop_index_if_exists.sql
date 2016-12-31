@@ -15,8 +15,8 @@
 ------------------------------------------------------------------
 
 # If you want to manage your index, you may would use the drop index if exists syntaxe...
-# but this syntaxe does not exists in mysql 5.7, so you can use the folowing procedure wich
-# make the same thing :
+# but this command does not exists in mysql, so you can use the folowing procedure wich
+# make the same thing by passing specific parameter, see how to usen the file how to use it/Watch and Test>generic procedure>sp_drop_index_if_exists :
 DELIMITER $
 
 DROP PROCEDURE IF EXISTS sp_index_exists$
@@ -57,7 +57,7 @@ BEGIN
 		ELSEIF NOT ISNULL(name_database) AND ISNULL(name_table) THEN
 			SELECT EXISTS
 				(SELECT * FROM information_schema.statistics
-					WHERE TABLE_SCHEMA = database() AND
+					WHERE TABLE_SCHEMA = name_database AND
 						  TABLE_NAME = name_table AND 
 						  INDEX_NAME = name_index) 
 			INTO p_result;
@@ -70,8 +70,10 @@ BEGIN
 		END IF;
         
         IF NOT ISNULL(and_drop) AND and_drop = TRUE THEN
-			IF (NOT ISNULL(name_table)) AND p_result THEN
-				CALL sp_drop_index(name_index,name_table,name_database);
+			IF (NOT ISNULL(name_table)) THEN
+				IF p_result = 1 THEN
+					CALL sp_drop_index(name_index,name_table,name_database);
+                END IF;
 			ELSE
 				SIGNAL SQLSTATE '45001' SET MESSAGE_TEXT = 'conflicting parameters : cannot drop index if table name is not define';
 			END IF;
