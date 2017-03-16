@@ -23,7 +23,7 @@ sp_index_exists(IN name_index VARCHAR(255),
                 OUT p_result BOOLEAN)
 /////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////
--- This procedure has two way of functioning
+-- This procedure has two manners to work
 ------------------FIRST WAY-------------------
 ------------------BASIC MODE------------------
 -- This mode allows you to know if the index that you give in first parameter is exist :
