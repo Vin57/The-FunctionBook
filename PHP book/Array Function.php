@@ -20,7 +20,7 @@
 ------------------------------------------------------------------
 
 # If you want to search for a value in an array you can use this function who check if a value is inside an array
-# /!\ WARNING /!\ This function use "compareValue" (this function follow this one, use Ctrl + F and input compareValue)
+# /!\ WARNING /!\ This function use "compareValue" (compareValue's function follow this one, use Ctrl + F and input : compareValue)
 
 /**
  * array_contains Parcours un tableau en retournant vrai, faux, ou le nombre d'occurence trouvé en fonction du paramétre $search
