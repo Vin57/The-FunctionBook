@@ -1,6 +1,7 @@
 
 <?php
-
+// You can use the whole affin file to arrange of one library of functions,
+// or look for only the functions which interest you
 /*********************************************************************
 /****************************ARRAY FUNCTION*************************/
 /*********************************************************************/
@@ -14,6 +15,73 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
+------------------------------------------------------------------
+--------------------------array_contains--------------------------
+------------------------------------------------------------------
+
+# If you want to search for a value in an array you can use this function who check if a value is inside an array
+# /!\ WARNING /!\ This function use "compareValue" (this function follow this one, use Ctrl + F and input compareValue)
+
+/**
+ * array_contains Parcours un tableau en retournant vrai, faux, ou le nombre d'occurence trouvé en fonction du paramétre $search
+ * @param array $array Le tableau dans lequel on souhaite faire la recherche
+ * @param mixed $search La variable à rechercher dans le tableau donnée en premier paramétre
+ * @param bool $withKeySearch : true=> La recherche est également étendu aux clés du tableau, 
+ *                              false => On ne cherche la donnée que parmis les valeurs du tableau
+ * @param bool $exactMatch : true => On souhaite savoir si la données trouvés est identique à celle cherchez,
+ *                           false => on souhaite savoir si la donnés trouvé est égal à celle chercher
+ * @param bool $runThrough: true => On souhaite parcourir tous le tableau et retourné le nombre d'occurence trouvé,
+ *                          false => On s'arrête dés que l'on trouve la première occurence
+ * @return boolean Retourne : false => La valeur n'à pas été trouvé dans le tableau ppour les paramètres donné
+ *                            true => La valeur à été trouvé dans le tableau
+ *                            (si runThroug est activé) => Le nombre de valeur trouvée
+ */
+public static function array_contains($array, $search, $withKeySearch = false, $exactMatch = false, $runThrough = false) {
+    $totalFound = 0; // Utile en mode runThrough
+    foreach ($array as $key => $data) {
+        if (($data == $search || $key == $search)) {// Si l'une des deux valeurs correspond à la recherche
+            if ($withKeySearch && ($key == $search)) {// Si l'on est en mode withKeySearch et que la valeur recherché est égal à la clé
+                if (self::compareValue($key, $search, $exactMatch)) {//Si les valeurs correspondent
+                    if ($runThrough)
+                        $totalFound += 1;
+                    else
+                        return true;
+                }
+            }
+            if (self::compareValue($data, $search, $exactMatch)) {
+                if ($runThrough)
+                    $totalFound += 1;
+                else
+                    return true;
+            }
+        }
+    }
+    return $totalFound;
+}
+
+------------------------------------------------------------------
+--------------------------compareValue--------------------------
+------------------------------------------------------------------
+
+# For compare if two value are exactly the same or are equal
+  
+/**
+* compareValue Compare deux valeurs entre elle
+* @param mixed $valueOne : La première valeur
+* @param mixed $valueTwo : La seconde valeur
+* @param bool $exactMatch : true => On souhaite savoir si la données trouvés est identique à celle cherchez, false, on souhaite savoir si la donnés trouvé est égal à celle chercher
+* @return boolean true si les valeurs correspondent, sinon retourne false
+*/
+public static function compareValue($valueOne, $valueTwo, $exactMatch = false) {
+    if ($exactMatch && $valueOne === $valueTwo) {// Si on est en mode exactMatch et que la valeur de la clé est identique à celle recherché
+        return true;
+    } else if (!$exactMatch && $valueOne == $valueTwo) {// Si l'on est pas en mode exactMatch
+        return true;
+    }
+    return false;
+}
+  
+  
 ------------------------------------------------------------------
   ------------------------------firstKey-------------------------
 ------------------------------------------------------------------
