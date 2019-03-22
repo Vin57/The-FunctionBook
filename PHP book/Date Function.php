@@ -75,9 +75,6 @@
 ------------------------------------------------------------------
 ------------------------------isDate-------------------------
 ------------------------------------------------------------------
-# I know that there is already a function to check a gregorian date in PHP (checkDate)
-# But you need to format the date with explode him into a month, a day, and a year before use it.
-# Use this following fonction, allow you to only enter the date value to the European standard size
   
 /**
      * Indique si une valeur est une date au format dd/mm/YYYY (format standard européen)
